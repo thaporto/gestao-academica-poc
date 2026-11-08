@@ -12,7 +12,7 @@ Professor: **Anderson Clayton**
 | Jamile Marques Lima | `@JamileM` |
 | Julia Assis Miguel | `@AssisJulia` |
 | Renan Rodrigues de Almeida | `@usuario` |
-| Thais Aparecida Porto | [@ThaisPorto026](https://github.com/ThaisPorto026) |
+| Thais Aparecida Porto | [@thaporto](https://github.com/thaporto) |
 | Yasmin Oliveira Dantas | `@usuario` |
 
 ## Sobre o projeto
