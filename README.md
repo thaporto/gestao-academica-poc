@@ -10,7 +10,7 @@ Professor: **Anderson Clayton**
 |---|---|
 | Igor Borges Krobath | `@Igor.Krobath` |
 | Jamile Marques Lima | `@JamileM` |
-| Julia Assis Miguel | `@Assisjulia` |
+| Julia Assis Miguel | `@AssisJulia` |
 | Renan Rodrigues de Almeida | `@usuario` |
 | Thais Aparecida Porto | [@ThaisPorto026](https://github.com/ThaisPorto026) |
 | Yasmin Oliveira Dantas | `@usuario` |
