@@ -8,7 +8,7 @@ Professor: **Anderson Clayton**
 
 | Integrante | Usuário no GitHub |
 |---|---|
-| Igor Borges Krobath | `@Igor.Krobath` |
+| Igor Borges Krobath | [@IgorBKrobath](https://github.com/IgorBKrobath) |
 | Jamile Marques Lima | `@JamileM` |
 | Julia Assis Miguel | `@AssisJulia` |
 | Renan Rodrigues de Almeida | `@usuario` |
