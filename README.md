@@ -13,7 +13,7 @@ Professor: **Anderson Clayton**
 | Julia Assis Miguel | `@AssisJulia` |
 | Renan Rodrigues de Almeida | `@usuario` |
 | Thais Aparecida Porto | [@thaporto](https://github.com/thaporto) |
-| Yasmin Oliveira Dantas | `@usuario` |
+| Yasmin Oliveira Dantas | `@yazincode` |
 
 ## Sobre o projeto
 
