@@ -1,4 +1,4 @@
-7# Gestão Acadêmica: Prova de Conceito (PoC)
+# Gestão Acadêmica: Prova de Conceito (PoC)
 
 Projeto Integrador 4 do curso de Tecnologia em Análise e Desenvolvimento de Sistemas do **Senac EAD**: *Desenvolvimento de Sistema Orientado a Dispositivos Móveis e Baseados na Web*.
 
