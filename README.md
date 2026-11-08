@@ -9,7 +9,7 @@ Professor: **Anderson Clayton**
 | Integrante | Usuário no GitHub |
 |---|---|
 | Igor Borges Krobath | `@Igor.Krobath` |
-| Jamile Marques Lima | `@usuario` |
+| Jamile Marques Lima | `@JamileM` |
 | Julia Assis Miguel | `@Assisjulia` |
 | Renan Rodrigues de Almeida | `@usuario` |
 | Thais Aparecida Porto | [@ThaisPorto026](https://github.com/ThaisPorto026) |
