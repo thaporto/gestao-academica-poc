@@ -1,4 +1,4 @@
-# Gestão Acadêmica: Prova de Conceito (PoC)
+7# Gestão Acadêmica: Prova de Conceito (PoC)
 
 Projeto Integrador 4 do curso de Tecnologia em Análise e Desenvolvimento de Sistemas do **Senac EAD**: *Desenvolvimento de Sistema Orientado a Dispositivos Móveis e Baseados na Web*.
 
@@ -8,9 +8,9 @@ Professor: **Anderson Clayton**
 
 | Integrante | Usuário no GitHub |
 |---|---|
-| Igor Borges Krobath | `@usuario` |
+| Igor Borges Krobath | `@Igor.Krobath` |
 | Jamile Marques Lima | `@usuario` |
-| Julia Assis Miguel | `@usuario` |
+| Julia Assis Miguel | `@Assisjulia` |
 | Renan Rodrigues de Almeida | `@usuario` |
 | Thais Aparecida Porto | [@ThaisPorto026](https://github.com/ThaisPorto026) |
 | Yasmin Oliveira Dantas | `@usuario` |
