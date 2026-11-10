@@ -11,7 +11,7 @@ Professor: **Anderson Clayton**
 | Igor Borges Krobath | [@IgorBKrobath](https://github.com/IgorBKrobath) |
 | Jamile Marques Lima | `@JamileM` |
 | Julia Assis Miguel | `@AssisJulia` |
-| Renan Rodrigues de Almeida | `@usuario` |
+| Renan Rodrigues de Almeida | [@renanr-almeida](https://github.com/renanr-almeida) |
 | Thais Aparecida Porto | [@thaporto](https://github.com/thaporto) |
 | Yasmin Oliveira Dantas | `@yazincode` |
 
