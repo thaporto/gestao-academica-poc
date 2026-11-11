@@ -1,0 +1,322 @@
+/* =====================================================================
+   Gestão Acadêmica - PoC
+   Paleta inspirada em lousa escolar (verde) + marca-texto (amarelo)
+   ===================================================================== */
+
+:root {
+  --lousa: #23443a;          /* cor principal */
+  --lousa-escura: #17302a;
+  --marca-texto: #f4d35e;    /* destaque e foco */
+  --fundo: #f3f5f2;
+  --superficie: #ffffff;
+  --texto: #1d2622;
+  --texto-suave: #5c6b64;
+  --borda: #d5ddd8;
+  --erro: #b3261e;
+  --erro-fundo: #fbeceb;
+  --sucesso: #2e7d4f;
+  --sucesso-fundo: #e8f4ec;
+
+  --raio: 10px;
+  --fonte: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --lousa: #8fc7b2;
+    --lousa-escura: #0f1f1a;
+    --fundo: #121816;
+    --superficie: #1b2320;
+    --texto: #e6ece9;
+    --texto-suave: #9fb0a8;
+    --borda: #2f3b36;
+    --erro: #ff8a80;
+    --erro-fundo: #3a1f1d;
+    --sucesso: #7fd19e;
+    --sucesso-fundo: #1a3326;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.25rem; }
+p  { margin: 0 0 1rem; }
+
+:focus-visible {
+  outline: 3px solid var(--marca-texto);
+  outline-offset: 2px;
+}
+
+/* ---------- Estrutura com menu lateral ---------- */
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.menu {
+  background: var(--lousa-escura);
+  color: #e9f1ed;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.menu .marca { font-weight: 700; font-size: 1.1rem; padding: 0 .5rem; }
+.menu .marca span { display: block; font-weight: 400; font-size: .85rem; opacity: .75; }
+
+.menu nav { display: flex; flex-direction: column; gap: .25rem; }
+
+.menu a {
+  color: inherit;
+  text-decoration: none;
+  padding: .6rem .75rem;
+  border-radius: 8px;
+}
+.menu a:hover { background: rgba(255, 255, 255, .08); }
+.menu a[aria-current="page"] {
+  background: rgba(244, 211, 94, .16);
+  box-shadow: inset 4px 0 0 var(--marca-texto);
+}
+
+.menu .usuario { margin-top: auto; font-size: .9rem; padding: 0 .5rem; }
+.menu .usuario button {
+  margin-top: .5rem;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, .3);
+  color: inherit;
+  padding: .4rem .8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+}
+
+main { padding: 2rem; max-width: 1100px; width: 100%; }
+
+.cabecalho { margin-bottom: 1.5rem; }
+.cabecalho p { color: var(--texto-suave); max-width: 60ch; }
+
+.colunas {
+  display: grid;
+  grid-template-columns: minmax(300px, 400px) 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.painel {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+}
+
+/* ---------- Formulários ---------- */
+
+.campo { margin-bottom: 1rem; }
+.campo label { display: block; font-weight: 700; margin-bottom: .3rem; }
+.campo .dica { font-weight: 400; color: var(--texto-suave); font-size: .85rem; }
+
+input, select {
+  width: 100%;
+  font: inherit;
+  padding: .65rem .75rem;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: var(--superficie);
+  color: var(--texto);
+}
+input[aria-invalid="true"] { border-color: var(--erro); background: var(--erro-fundo); }
+
+.msg-campo { color: var(--erro); font-size: .875rem; margin-top: .25rem; min-height: 1.2em; }
+
+.botao {
+  display: inline-block;
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: .7rem 1.25rem;
+  cursor: pointer;
+  background: var(--lousa);
+  color: #fff;
+  text-decoration: none;
+}
+.botao:hover { filter: brightness(1.1); }
+.botao:disabled { opacity: .55; cursor: not-allowed; }
+.botao.secundario { background: transparent; color: var(--lousa); border: 1px solid var(--lousa); }
+.botao.largo { width: 100%; }
+
+@media (prefers-color-scheme: dark) {
+  .botao { color: #10201a; }
+  .botao.secundario { color: var(--lousa); }
+}
+
+.aviso {
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  margin-bottom: 1rem;
+}
+.aviso.erro { background: var(--erro-fundo); color: var(--erro); }
+.aviso.sucesso { background: var(--sucesso-fundo); color: var(--sucesso); }
+.aviso:empty { display: none; }
+
+/* ---------- Tabelas ---------- */
+
+.tabela-rolagem { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+th, td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--borda); }
+th { color: var(--texto-suave); font-weight: 700; font-size: .85rem; }
+td.numero { font-variant-numeric: tabular-nums; font-weight: 700; }
+td.cpf, td.numero, td.data { white-space: nowrap; }
+.vazio { color: var(--texto-suave); padding: 1rem 0; }
+
+.busca { display: flex; gap: .5rem; margin-bottom: 1rem; }
+
+/* ---------- Tela de login ---------- */
+
+.tela-login {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.tela-login .lado-lousa {
+  background: var(--lousa-escura);
+  color: #e9f1ed;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tela-login .lado-lousa h1 { font-size: 2.25rem; max-width: 14ch; }
+.tela-login .lado-lousa p { opacity: .8; max-width: 40ch; }
+.tela-login .lado-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.tela-login form { width: 100%; max-width: 360px; }
+.credenciais-demo { font-size: .85rem; color: var(--texto-suave); margin-top: 1rem; }
+
+/* ---------- Matrícula: etapas, turmas e carteirinha ---------- */
+
+.etapas { display: flex; gap: .5rem; list-style: none; padding: 0; margin: 0 0 1.5rem; flex-wrap: wrap; }
+.etapas li {
+  padding: .35rem .8rem;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  color: var(--texto-suave);
+  font-size: .9rem;
+}
+.etapas li.ativa { border-color: var(--lousa); color: var(--lousa); font-weight: 700; }
+.etapas li.feita { background: var(--sucesso-fundo); border-color: transparent; color: var(--sucesso); }
+
+.lista-alunos { list-style: none; padding: 0; margin: 0; max-height: 280px; overflow-y: auto; }
+.lista-alunos button {
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: .6rem .75rem;
+  cursor: pointer;
+}
+.lista-alunos button:hover { background: var(--fundo); }
+.lista-alunos button[aria-pressed="true"] { border-color: var(--lousa); background: var(--sucesso-fundo); }
+.lista-alunos small { display: block; color: var(--texto-suave); }
+
+.turmas { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; }
+.turma {
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1rem;
+  cursor: pointer;
+}
+.turma strong { display: block; }
+.turma small { display: block; color: var(--texto-suave); }
+.turma .vagas { margin-top: .5rem; font-size: .9rem; }
+.turma[aria-pressed="true"] { border-color: var(--lousa); box-shadow: 0 0 0 2px var(--lousa); }
+.turma:disabled { opacity: .5; cursor: not-allowed; }
+
+.resumo { margin: 1.5rem 0 1rem; }
+#confirmar { margin-top: 1rem; }
+.acoes { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+/* Carteirinha exibida quando a matrícula é concluída */
+.carteirinha {
+  max-width: 420px;
+  border-radius: 14px;
+  padding: 1.5rem;
+  background: var(--lousa-escura);
+  color: #f1f5f3;
+  position: relative;
+  overflow: hidden;
+  animation: aparecer .35s ease-out;
+}
+.carteirinha::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 10px;
+  background: var(--marca-texto);
+}
+.carteirinha .rotulo { font-size: .85rem; opacity: .75; }
+.carteirinha .numero-matricula {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  font-variant-numeric: tabular-nums;
+  margin: .25rem 0 1rem;
+  color: var(--marca-texto);
+}
+.carteirinha dl { display: grid; grid-template-columns: auto 1fr; gap: .25rem 1rem; margin: 0 0 .5rem; }
+.carteirinha dt { opacity: .7; }
+.carteirinha dd { margin: 0; font-weight: 700; }
+
+@keyframes aparecer {
+  from { transform: scale(.96); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carteirinha { animation: none; }
+}
+
+[hidden] { display: none !important; }
+
+/* ---------- Celular e tablet ---------- */
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .menu { flex-direction: row; align-items: center; flex-wrap: wrap; padding: 1rem; gap: .75rem; }
+  .menu nav { flex-direction: row; }
+  .menu .usuario { margin: 0 0 0 auto; display: flex; gap: .5rem; align-items: center; }
+  .menu .usuario button { margin: 0; }
+  .menu .usuario .nome-usuario { display: none; }
+  main { padding: 1.25rem; }
+  .colunas { grid-template-columns: 1fr; }
+  .tela-login { grid-template-columns: 1fr; }
+  .tela-login .lado-lousa { padding: 2rem 1.5rem; }
+  .tela-login .lado-lousa h1 { font-size: 1.75rem; }
+}
