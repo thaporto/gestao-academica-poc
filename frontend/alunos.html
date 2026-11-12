@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alunos | Gestão Acadêmica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/telas.css">
+</head>
+<body>
+  <div class="layout">
+    <header class="barra-topo">
+      <button type="button" class="botao-menu" id="abrir-menu" aria-label="Abrir menu" aria-controls="menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <strong>Gestão Acadêmica</strong>
+    </header>
+    <div class="fundo-menu" id="fundo-menu" hidden></div>
+    <aside class="menu" id="menu">
+      <div class="marca">Gestão Acadêmica<span>Secretaria</span></div>
+      <nav aria-label="Menu principal">
+        <a href="matricula.html">Nova matrícula</a>
+        <a href="alunos.html" aria-current="page">Alunos</a>
+        <a href="consulta-matriculas.html">Matrículas</a>
+      </nav>
+      <div class="usuario">
+        <span class="nome-usuario"></span>
+        <button type="button" id="sair">Sair</button>
+      </div>
+    </aside>
+
+    <main>
+      <header class="cabecalho">
+        <h1>Alunos</h1>
+        <p>Cadastre novos alunos e consulte os já cadastrados por nome ou CPF.</p>
+      </header>
+
+      <div class="colunas">
+        <section class="painel" aria-labelledby="titulo-cadastro">
+          <h2 id="titulo-cadastro">Novo aluno</h2>
+          <p class="aviso" id="aviso" role="alert"></p>
+
+          <form id="form-aluno" novalidate>
+            <div class="campo">
+              <label for="nome">Nome completo</label>
+              <input id="nome" name="nome" type="text" autocomplete="name" required>
+              <div class="msg-campo" id="erro-nome"></div>
+            </div>
+            <div class="campo">
+              <label for="cpf">CPF <span class="dica">(000.000.000-00)</span></label>
+              <input id="cpf" name="cpf" type="text" inputmode="numeric" maxlength="14" required>
+              <div class="msg-campo" id="erro-cpf"></div>
+            </div>
+            <div class="campo">
+              <label for="data_nascimento">Data de nascimento</label>
+              <input id="data_nascimento" name="data_nascimento" type="date" required>
+              <div class="msg-campo" id="erro-data_nascimento"></div>
+            </div>
+            <div class="campo">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+              <div class="msg-campo" id="erro-email"></div>
+            </div>
+            <div class="campo">
+              <label for="telefone">Telefone <span class="dica">(opcional)</span></label>
+              <input id="telefone" name="telefone" type="tel" inputmode="numeric" maxlength="15" autocomplete="tel">
+              <div class="msg-campo" id="erro-telefone"></div>
+            </div>
+            <button class="botao largo" type="submit">Cadastrar aluno</button>
+          </form>
+        </section>
+
+        <section class="painel" aria-labelledby="titulo-lista">
+          <h2 id="titulo-lista">Alunos cadastrados</h2>
+          <div class="busca">
+            <input id="busca" type="search" placeholder="Buscar por nome ou CPF" aria-label="Buscar aluno por nome ou CPF">
+          </div>
+          <div class="tabela-rolagem tabela-cartoes">
+            <table>
+              <thead>
+                <tr><th>Nome</th><th>CPF</th><th>Nascimento</th><th>E-mail</th><th></th></tr>
+              </thead>
+              <tbody id="tabela-alunos"></tbody>
+            </table>
+          </div>
+          <p class="vazio" id="sem-alunos" hidden>Nenhum aluno encontrado.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/comum.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/alunos.js"></script>
+</body>
+</html>

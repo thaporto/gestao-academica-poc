@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nova matrícula | Gestão Acadêmica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/telas.css">
+</head>
+<body>
+  <div class="layout">
+    <header class="barra-topo">
+      <button type="button" class="botao-menu" id="abrir-menu" aria-label="Abrir menu" aria-controls="menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <strong>Gestão Acadêmica</strong>
+    </header>
+    <div class="fundo-menu" id="fundo-menu" hidden></div>
+    <aside class="menu" id="menu">
+      <div class="marca">Gestão Acadêmica<span>Secretaria</span></div>
+      <nav aria-label="Menu principal">
+        <a href="matricula.html" aria-current="page">Nova matrícula</a>
+        <a href="alunos.html">Alunos</a>
+        <a href="consulta-matriculas.html">Matrículas</a>
+      </nav>
+      <div class="usuario">
+        <span class="nome-usuario"></span>
+        <button type="button" id="sair">Sair</button>
+      </div>
+    </aside>
+
+    <main>
+      <header class="cabecalho">
+        <h1>Nova matrícula</h1>
+        <p>Escolha o aluno, selecione a turma e confirme. O número da matrícula é gerado automaticamente.</p>
+      </header>
+
+      <ol class="etapas" aria-label="Etapas da matrícula">
+        <li id="etapa-1" class="ativa">1. Aluno</li>
+        <li id="etapa-2">2. Turma</li>
+        <li id="etapa-3">3. Confirmação</li>
+      </ol>
+
+      <p class="aviso erro" id="aviso" role="alert"></p>
+
+      <div id="fluxo">
+        <section class="painel" aria-labelledby="titulo-aluno">
+          <h2 id="titulo-aluno">1. Escolha o aluno</h2>
+          <div class="busca">
+            <input id="busca" type="search" placeholder="Buscar por nome ou CPF" aria-label="Buscar aluno por nome ou CPF">
+          </div>
+          <ul class="lista-alunos" id="lista-alunos"></ul>
+          <p class="vazio" id="sem-alunos" hidden>Nenhum aluno encontrado. <a href="alunos.html">Cadastrar aluno</a></p>
+        </section>
+
+        <section class="painel" aria-labelledby="titulo-turma" style="margin-top:1.5rem">
+          <h2 id="titulo-turma">2. Escolha a turma</h2>
+          <div class="turmas" id="turmas"></div>
+        </section>
+
+        <section class="painel" aria-labelledby="titulo-resumo" style="margin-top:1.5rem">
+          <h2 id="titulo-resumo">3. Confirme a matrícula</h2>
+          <p class="resumo" id="resumo">Selecione um aluno e uma turma para continuar.</p>
+          <button class="botao" type="button" id="confirmar" disabled>Confirmar matrícula</button>
+        </section>
+      </div>
+
+      <section id="resultado" hidden aria-live="polite">
+        <p class="aviso sucesso" style="display:block">Matrícula realizada com sucesso!</p>
+        <div class="carteirinha">
+          <div class="rotulo">Número da matrícula</div>
+          <div class="numero-matricula" id="r-numero"></div>
+          <dl>
+            <dt>Aluno</dt><dd id="r-aluno"></dd>
+            <dt>CPF</dt><dd id="r-cpf"></dd>
+            <dt>Curso</dt><dd id="r-curso"></dd>
+            <dt>Turma</dt><dd id="r-turma"></dd>
+            <dt>Período</dt><dd id="r-periodo"></dd>
+          </dl>
+        </div>
+        <div class="acoes">
+          <button class="botao" type="button" id="nova">Nova matrícula</button>
+          <a class="botao secundario" href="consulta-matriculas.html">Ver matrículas</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/comum.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/matricula.js"></script>
+</body>
+</html>
