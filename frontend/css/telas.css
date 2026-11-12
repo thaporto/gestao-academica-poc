@@ -1,0 +1,124 @@
+/* =====================================================================
+   Complemento das telas de alunos e matrícula (Parte 6)
+   Menu lateral deslizante e ajustes para celular.
+   Não altera o style.css: apenas acrescenta regras por cima dele.
+   ===================================================================== */
+
+main { min-width: 0; }                 /* evita que tabelas largas estourem a tela */
+
+.barra-topo, .fundo-menu { display: none; }
+
+@media (max-width: 860px) {
+  /* ---------- Barra superior com botão do menu ---------- */
+  .barra-topo {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: .6rem 1rem;
+    background: var(--lousa-escura);
+    color: #e9f1ed;
+  }
+  .botao-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0 10px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .botao-menu span { display: block; height: 3px; border-radius: 2px; background: #e9f1ed; }
+
+  /* ---------- Menu lateral deslizante ---------- */
+  .menu {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 40;
+    width: min(280px, 82vw);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform .25s ease, visibility .25s;
+  }
+  .menu.aberto { transform: translateX(0); visibility: visible; }
+  .menu nav { flex-direction: column; }
+  .menu a { padding: .8rem .75rem; }
+  .menu .usuario { margin: auto 0 0; display: block; }
+  .menu .usuario .nome-usuario { display: block; }
+  .menu .usuario button { margin-top: .5rem; min-height: 44px; }
+
+  .fundo-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    background: rgba(0, 0, 0, .5);
+  }
+  .fundo-menu[hidden] { display: none !important; }
+  .fundo-menu:not([hidden]) { display: block; }
+
+  /* ---------- Conteúdo ---------- */
+  main { padding: 1rem; }
+  h1 { font-size: 1.4rem; }
+  .painel { padding: 1rem; }
+  input, select { font-size: 16px; }            /* evita o zoom automático no iPhone */
+  .botao { min-height: 44px; }
+  .busca { flex-wrap: wrap; }
+  .busca input { flex: 1 1 100%; }
+  .busca .botao { flex: 1 1 100%; text-align: center; }
+  .turmas { grid-template-columns: 1fr; }
+  .acoes .botao { flex: 1 1 100%; text-align: center; }
+  .carteirinha { max-width: 100%; }
+  .carteirinha .numero-matricula { font-size: 2rem; }
+  .carteirinha dl { grid-template-columns: 1fr; gap: 0; }
+  .carteirinha dd { margin-bottom: .5rem; }
+  .etapas { gap: .35rem; }
+  .etapas li { font-size: .8rem; padding: .3rem .6rem; }
+  .lista-alunos { max-height: 220px; }
+}
+
+/* ---------- Tabelas viram cartões em telas pequenas ---------- */
+@media (max-width: 640px) {
+  .tabela-cartoes table, .tabela-cartoes tbody, .tabela-cartoes tr, .tabela-cartoes td { display: block; width: 100%; }
+  .tabela-cartoes thead { position: absolute; left: -9999px; }   /* some só visualmente */
+  .tabela-cartoes tr {
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: .5rem .75rem;
+    margin-bottom: .75rem;
+  }
+  .tabela-cartoes td {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--borda);
+    text-align: right;
+    word-break: break-word;
+  }
+  .tabela-cartoes td:last-child { border-bottom: none; }
+  .tabela-cartoes td::before {
+    content: attr(data-rotulo);
+    flex: none;
+    font-weight: 700;
+    font-size: .85rem;
+    color: var(--texto-suave);
+    text-align: left;
+  }
+  .tabela-cartoes td.acao::before { content: ""; }
+  .tabela-cartoes td.acao { justify-content: flex-end; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu { transition: none; }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matrículas | Gestão Acadêmica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/telas.css">
+</head>
+<body>
+  <div class="layout">
+    <header class="barra-topo">
+      <button type="button" class="botao-menu" id="abrir-menu" aria-label="Abrir menu" aria-controls="menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <strong>Gestão Acadêmica</strong>
+    </header>
+    <div class="fundo-menu" id="fundo-menu" hidden></div>
+    <aside class="menu" id="menu">
+      <div class="marca">Gestão Acadêmica<span>Secretaria</span></div>
+      <nav aria-label="Menu principal">
+        <a href="matricula.html">Nova matrícula</a>
+        <a href="alunos.html">Alunos</a>
+        <a href="consulta-matriculas.html" aria-current="page">Matrículas</a>
+      </nav>
+      <div class="usuario">
+        <span class="nome-usuario"></span>
+        <button type="button" id="sair">Sair</button>
+      </div>
+    </aside>
+
+    <main>
+      <header class="cabecalho">
+        <h1>Matrículas realizadas</h1>
+        <p>Consulte as matrículas já registradas, da mais recente para a mais antiga.</p>
+      </header>
+
+      <section class="painel" aria-labelledby="titulo-lista">
+        <h2 id="titulo-lista">Lista de matrículas</h2>
+        <p class="aviso erro" id="aviso" role="alert"></p>
+        <div class="busca">
+          <input id="busca" type="search" placeholder="Filtrar por aluno, CPF ou turma" aria-label="Filtrar matrículas">
+          <a class="botao" href="matricula.html">Nova matrícula</a>
+        </div>
+        <div class="tabela-rolagem tabela-cartoes">
+          <table>
+            <thead>
+              <tr>
+                <th>Matrícula</th><th>Aluno</th><th>CPF</th><th>Curso</th>
+                <th>Turma</th><th>Período</th><th>Data</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-matriculas"></tbody>
+          </table>
+        </div>
+        <p class="vazio" id="sem-matriculas" hidden>Nenhuma matrícula encontrada.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/comum.js"></script>
+  <script src="js/menu.js"></script>
+  <script>
+    const aviso = document.getElementById("aviso");
+    const tabela = document.getElementById("tabela-matriculas");
+    const semMatriculas = document.getElementById("sem-matriculas");
+    let matriculas = [];
+
+    function desenhar() {
+      const termo = document.getElementById("busca").value.trim().toLowerCase();
+      const termoDigitos = termo.replace(/\D/g, "");
+      const filtradas = matriculas.filter((m) =>
+        !termo ||
+        m.aluno.toLowerCase().includes(termo) ||
+        m.turma.toLowerCase().includes(termo) ||
+        m.numero.includes(termo) ||
+        (termoDigitos && m.cpf.replace(/\D/g, "").includes(termoDigitos))
+      );
+
+      tabela.innerHTML = filtradas.map((m) => `
+        <tr>
+          <td class="numero" data-rotulo="Matrícula">${escapar(m.numero)}</td>
+          <td data-rotulo="Aluno">${escapar(m.aluno)}</td>
+          <td class="cpf" data-rotulo="CPF">${escapar(m.cpf)}</td>
+          <td data-rotulo="Curso">${escapar(m.curso)}</td>
+          <td data-rotulo="Turma">${escapar(m.turma)}</td>
+          <td data-rotulo="Período">${escapar(m.periodo)}</td>
+          <td class="data" data-rotulo="Data">${escapar(dataBR(m.data_matricula))}</td>
+          <td data-rotulo="Status">${escapar(m.status)}</td>
+        </tr>`).join("");
+      semMatriculas.hidden = filtradas.length > 0;
+    }
+
+    async function iniciar() {
+      try {
+        await iniciarPaginaInterna();
+        matriculas = await api("/api/matriculas");
+        desenhar();
+      } catch (erro) {
+        aviso.textContent = erro.message;
+      }
+    }
+
+    document.getElementById("busca").addEventListener("input", desenhar);
+    iniciar();
+  </script>
+</body>
+</html>
