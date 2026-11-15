@@ -9,11 +9,11 @@ Professor: **Anderson Clayton**
 | Integrante | Usuário no GitHub |
 |---|---|
 | Igor Borges Krobath | [@IgorBKrobath](https://github.com/IgorBKrobath) |
-| Jamile Marques Lima | [`@JamileM`](https://github.com/JamileM) |
-| Julia Assis Miguel | [`@AssisJulia`](https://github.com/AssisJulia) |
+| Jamile Marques Lima | [@JamileM](https://github.com/JamileM) |
+| Julia Assis Miguel | [@AssisJulia](https://github.com/AssisJulia) |
 | Renan Rodrigues de Almeida | [@renanr-almeida](https://github.com/renanr-almeida) |
 | Thais Aparecida Porto | [@thaporto](https://github.com/thaporto) |
-| Yasmin Oliveira Dantas | [`@yazincode`](https://github.com/yazincode) |
+| Yasmin Oliveira Dantas | [@yazincode](https://github.com/yazincode) |
 
 ## Sobre o projeto
 
