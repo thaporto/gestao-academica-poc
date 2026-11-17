@@ -204,6 +204,7 @@ Exemplo de resposta de `POST /api/matriculas`:
 |---|---|---|
 | ![CPF inválido](docs/telas/02_cpf_invalido.png) | ![Duplicado](docs/telas/04_cpf_duplicado.png) | ![Celular](docs/telas/11_mobile.png) |
 
+</>Markdown
 ## Vídeo de demonstração
 
-Link: *(inserir o link do YouTube não listado ou o caminho do MP4 no repositório)*
+Link: https://youtu.be/BPIjwaGW0U4
