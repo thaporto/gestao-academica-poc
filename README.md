@@ -99,8 +99,9 @@ gestao-academica-poc/
 ### 2. Baixar o projeto
 
 ```bash
-git clone https://github.com/ThaisPorto026/gestao-academica-poc.git
+git clone https://github.com/thaporto/gestao-academica-poc.git
 cd gestao-academica-poc/backend
+
 ```
 
 ### 3. Criar o ambiente virtual e instalar as dependências
@@ -204,7 +205,10 @@ Exemplo de resposta de `POST /api/matriculas`:
 |---|---|---|
 | ![CPF inválido](docs/telas/02_cpf_invalido.png) | ![Duplicado](docs/telas/04_cpf_duplicado.png) | ![Celular](docs/telas/11_mobile.png) |
 
-</>Markdown
+
 ## Vídeo de demonstração
 
-Link: https://youtu.be/BPIjwaGW0U4
+Assista à apresentação e demonstração do funcionamento da nossa Prova de Conceito:
+
+[▶️ Assistir ao vídeo no YouTube](https://youtu.be/BPIjwaGW0U4)
+
